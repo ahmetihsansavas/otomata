@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>NFA and DFA  for(1|0)*00 </title>
+</head>
+
+<body>
+
+<h2 id=title></h2>
+
+<p>Non-deterministic finite automaton</p>
+
+w = <input id=input type=text value=01001010
+  onChange="test()"> &emsp;
+F = <input id=final type=text value=c
+  onChange="test()" style="width:30px">
+
+<pre id=out></pre>
+
+<hr />
+<b>NFA</b>
+
+<style>
+    table { 
+        border-collapse: collapse; 
+        margin: 0 50px; 
+    }
+    th { 
+        color: blue; 
+        padding: 5px 12px; 
+    }
+    td { 
+        border: 1px solid blue; 
+        padding: 5px 12px; 
+        text-align: center; 
+    }
+</style>
+<table>
+<tr><th></th><th>0</th><th>1</th></tr>
+<tr><th>> a</th><td>ab</td><td>a</td></tr>
+<tr><th>&emsp;b</th><td>c</td><td>ϕ</td></tr>
+<tr><th>* c</th><td>ϕ</td><td>ϕ</td></tr>
+</table>
+
+<b>DFA</b>
+<table>
+<tr><th></th><th>0</th><th>1</th></tr>
+<tr><th>> q</th><td>p</td><td>q</td></tr>
+<tr><th>&emsp;p</th><td>s</td><td>q</td></tr>
+<tr><th>* s</th><td>s</td><td>q</td></tr>
+</table>
+
+<pre id=sample></pre>
+
+<hr />
+
+<script>
+"use strict";
+
+
+function union(a, b) { //set operation using strings
+    let s = a
+    for (let x of b) if (!a.includes(x)) s += x
+    return s
+}
+function intersect(a, b) {
+    let s = ''
+    for (let x of b) if (a.includes(x)) s += x
+    return s
+}
+function delta2(q, c) { // (1|0)*00
+    if (q=='Q' && c=='0') return 'P'
+    if (q=='Q' && c=='1') return 'Q'
+    if (q=='P' && c=='0') return 'S'
+    if (q=='P' && c=='1') return 'Q'
+    if (q=='S' && c=='0') return 'S' 
+    if (c=='1') return 'Q'
+    return '';  //default -- no transition
+}
+function accept2(w, F='S', q='Q') {
+    //w: input String
+    //F: final state(s)
+    //q: current state
+    let i = 0, txt = q
+    while (i < w.length) {
+        q = delta2(q, w[i])
+        if (q == '') break
+        i++; 
+    txt += " -> "+q
+    }
+}
+
+function test2() {
+    let w = input.value, s = "  "
+    for (let c of w) s += c+"    "
+    s += '\n'+accept2(w, final.value)
+    console.log(s);
+
+
+
+
+
+    //out.innerHTML = s
+}
+
+function delta(q, c) { // (1|0)*00
+    if (q=='a' && c=='0') return 'ab'
+    if (q=='a' && c=='1') return 'a'
+    if (q=='b' && c=='0') return 'c' 
+    return '';  //default -- no transition
+}
+
+function accept(w, F='c', Q='a') {
+    //w: input String
+    //F: final state(s)
+    //Q: current state(s)
+    let i = 0, txt = Q
+    while (i < w.length) {
+        let c = w[i], T=''
+        for (let q of Q) 
+            T = union(T, delta(q, c))
+        Q = T
+        if (Q == '') break
+        i++; txt += ", "+c+" -> "+Q+'\n'+Q
+    
+    }
+
+    input.selectionStart = i
+    input.selectionEnd = i+1
+    let a = intersect(Q, F).length > 0
+    return  a 
+}
+function test() {
+    let s = accept(input.value, final.value);
+    console.log(s);  out.innerHTML = s
+    let e=/00$/
+    let a=[];
+    let b=[];
+    let c=[];
+    for (let n=1; n<50; n++) {
+          let w = n.toString(2)  // to binary
+          if (accept(w) ){
+            a.push(w);
+
+        }
+         if (accept2(w) ){
+            b.push(w);
+
+        }     
+          if (e.test(w) ){
+            c.push(w);
+
+        }  
+     }
+ console.log(a) ; out.innerHTML=a
+console.log(b) ; out.innerHTML=b
+console.log(c) ; out.innerHTML=c 
+}
+
+    title.innerText = document.title;
+    sample.innerText = delta+'\n'+accept;
+    test();
+    
+</script>
+</body>
+
+
+
+
+</html>
