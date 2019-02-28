@@ -71,15 +71,15 @@ function intersect(a, b) {
     return s
 }
 function delta2(q, c) { // (1|0)*00
-    if (q=='Q' && c=='0') return 'P'
-    if (q=='Q' && c=='1') return 'Q'
-    if (q=='P' && c=='0') return 'S'
-    if (q=='P' && c=='1') return 'Q'
-    if (q=='S' && c=='0') return 'S' 
-    if (c=='1') return 'Q'
+    if (q=='q' && c=='0') return 'p'
+    if (q=='q' && c=='1') return 'q'
+    if (q=='p' && c=='0') return 's'
+    if (q=='p' && c=='1') return 'q'
+    if (q=='s' && c=='0') return 's' 
+    if (c=='1') return 'q'
     return '';  //default -- no transition
 }
-function accept2(w, F='S', q='Q') {
+function accept2(w, F='s', q='q') {
     //w: input String
     //F: final state(s)
     //q: current state
