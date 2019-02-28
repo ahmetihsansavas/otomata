@@ -11,13 +11,13 @@
 <h2 id=title></h2>
 
 <p>Non-deterministic finite automaton</p>
-<p id='yazı'></p>
+
 
 w = <input id=input type=text value=01001010
   onChange="test()"> &emsp;
 F = <input id=final type=text value=c
   onChange="test()" style="width:30px">
-
+<p id='yazı'></p>
 <pre id=out></pre>
 
 <hr />
@@ -135,7 +135,7 @@ function accept(w, F='c', Q='a') {
 }
 function test() {
     let s = accept(input.value, final.value);
-    yazı.innerHTML="bütün otomatalarda kabul edilen sayılar";
+    yazı.innerHTML="--bütün otomatalarda kabul edilen sayılar---";
     console.log(s);  out.innerHTML = s
     let e=/00$/
     let a=[];
