@@ -11,6 +11,7 @@
 <h2 id=title></h2>
 
 <p>Non-deterministic finite automaton</p>
+<p id='yazı'></p>
 
 w = <input id=input type=text value=01001010
   onChange="test()"> &emsp;
@@ -74,7 +75,7 @@ function delta2(q, c) { // (1|0)*00
     if (q=='q' && c=='0') return 'p'
     if (q=='q' && c=='1') return 'q'
     if (q=='p' && c=='0') return 's'
-    if (q=='p' && c=='1') return 'q'
+    if (q=='p' && c=='1') return 'p'
     if (q=='s' && c=='0') return 's' 
     if (c=='1') return 'q'
     return '';  //default -- no transition
@@ -134,6 +135,7 @@ function accept(w, F='c', Q='a') {
 }
 function test() {
     let s = accept(input.value, final.value);
+    yazı.innerHTML="bütün otomatalarda kabul edilen sayılar";
     console.log(s);  out.innerHTML = s
     let e=/00$/
     let a=[];
