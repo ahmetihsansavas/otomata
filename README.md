@@ -6,7 +6,7 @@
 
 2.[Non-Deterministic Finite Automata](https://ahmetihsansavas.github.io/otomata/cw2.html)
 
-3.[Regular Expression](https://ahmetihsansavas.github.io/otomata/cw3.html))
+3.[Regular Expression](https://ahmetihsansavas.github.io/otomata/cw3.html)
 
 
 ## Links
