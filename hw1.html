@@ -49,11 +49,15 @@
     var ptr = "\".*\"";
     var ptr2 = "\\[.*\\]";
     const word =
-      ["let a = 'aaa'  ", "let b = [1,23,4,4]",
+      ['let longString = "This is a very long string which needs " +
+
+"to wrap across multiple lines because " +
+
+"otherwise my code is unreadable."', "let b = [1,23,4,4]",
         "Geldim gördüm buldum...", "Excellent expression tax ", "acı tatlı bcirc altı bes altmısaltıc ellibes", "3 chicken costs $30"];
     function setValues() {
       //pat.value = ptrn[0];
-      inp.value =  word [1];
+      inp.value = word[0] + word [1];
       checkRE();
     }
     function checkRE() {
