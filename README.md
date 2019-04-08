@@ -17,6 +17,8 @@
 
 1.[Regular expression](https://ahmetihsansavas.github.io/otomata/hw1.html)
 
+2.[Expression](https://ahmetihsansavas.github.io/otomata/hw2/Expression.html)
+
 
 
 
