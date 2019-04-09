@@ -12,7 +12,7 @@
 
 5.[Expression](https://ahmetihsansavas.github.io/otomata/Expression.html)
 
-5.[Expression](https://ahmetihsansavas.github.io/otomata/cw6.html)
+6.[Push Down Automata](https://ahmetihsansavas.github.io/otomata/cw6.html)
 
 
 ## Homeworks
