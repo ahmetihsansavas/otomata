@@ -1,4 +1,6 @@
 <html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
   <head>
     <title>NFA</title>
 
@@ -9,6 +11,35 @@
       otomatların (özdevinirlerin) tersine 
       her durumdan gidişin karışık olduğu ve her durum için 
       bir sonraki kelimede nereye gidileceğinin belirli olmadığı otomatlardır.</p>
+    <p>Deterministik olmayan sonlu durum makinesi, deterministik yapıda çalışma gibi bir zorunluluğu bulunmayan sonlu durum makinesidir. 
+      Üstküme oluşturma algoritması kullanılarak deterministik yapıya dönüştürülebilir. Yalnızca düzenli diller ile çalışmaktadır. 
+      1959'da Michael O. Rabin tarafından geliştirilmiştir. </p>  
+      
+      <b>NFA</b>
+
+      <img src="nfa.png">
+
+<style>
+    table { 
+        border-collapse: collapse; 
+        margin: 0 50px; 
+    }
+    th { 
+        color: blue; 
+        padding: 5px 12px; 
+    }
+    td { 
+        border: 4px solid blue; 
+        padding: 5px 12px; 
+        text-align: center; 
+    }
+</style>
+<table>
+<tr><th></th><th>0</th><th>1</th></tr>
+<tr><th>> a</th><td>ab</td><td>a</td></tr>
+<tr><th>&emsp;b</th><td>c</td><td>ϕ</td></tr>
+<tr><th>* c</th><td>ϕ</td><td>ϕ</td></tr>
+</table>
   	
   </body>
 </html>
