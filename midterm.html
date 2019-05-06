@@ -3,43 +3,498 @@
     <meta name="viewport" content="width=device-width">
   <head>
     <title>NFA</title>
+    <style>
+    
+ul {
+    list-style-type: none;
 
+    margin: 0;
+
+    padding: 10;
+
+    background-color: #27ae60;
+
+    overflow: hidden;
+}
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+
+    padding:12px 14px;
+
+    background-color: #27ae60;
+
+
+    color:white;
+
+    text-decoration:none; 
+}
+li a:hover{
+    background-color:#045e2b; 
+}
+.kolon { float:left; border:3px solid #045e2b; padding:10px; margin:10px; }
+    
+    </style>
+    
+    <div>
+    <ul>
+        <li><a href="#index">Ahmet İhsan Savaş</a></li>
+      
+        <li> </li>
+      
+        <li><a href="#index">Home</a></li>
+    
+      <li><a href="#whatisnfa">What is NFA?</a></li>
+      <li><a href="#formal">Formal Definiton</a></li>
+    
+      <li><a href="#tablo">Examples</a></li>
+      <li><a href="#App">Application</a></li>
+      
+      <li ><a href="#referans">References</a></li>
+     
+    </ul>
+  </div>
   </head> 
   <body>
-    <h1>NonDeterministic Finite Automata</h1>
-    <p>DFA (deterministic finite automat) belirli sonlu 
-      otomatların (özdevinirlerin) tersine 
-      her durumdan gidişin karışık olduğu ve her durum için 
-      bir sonraki kelimede nereye gidileceğinin belirli olmadığı otomatlardır.</p>
-    <p>Deterministik olmayan sonlu durum makinesi, deterministik yapıda çalışma gibi bir zorunluluğu bulunmayan sonlu durum makinesidir. 
-      Üstküme oluşturma algoritması kullanılarak deterministik yapıya dönüştürülebilir. Yalnızca düzenli diller ile çalışmaktadır. 
-      1959'da Michael O. Rabin tarafından geliştirilmiştir. </p>  
-      
-      <b>NFA</b>
+
+ 
+    <h1 align="center">Non-Deterministic Finite Automata</h1>
+    <h2 id="whatisnfa">What is NFA?</h2>
+    <p>In automata theory, a finite state machine is called a deterministic finite automaton (DFA), if
 
       
+        each of its transitions is uniquely determined by its source state and input symbol, and
+        reading an input symbol is required for each state transition.</p>
+    <p>Nondeterminism gives a machine multiple
+      options for its moves.</p>
+    <p>In a nondeterministic finite automaton (NFA),
+      for each state there can be zero, one, two, or
+      more transitions corresponding to a particular
+      symbol.</p>
+      <p>If NFA gets to state with more than one possible
+        transition corresponding to the input symbol,
+        we say it branches.</p>  
+      <p>If NFA gets to a state where there is no valid
+        transition, then that branch dies.</p>
+        <p>NFAs were introduced in 1959 by Michael O. Rabin and Dana Scott, who also showed their equivalence to DFAs. 
+          NFAs are used in the implementation of regular expressions: Thompson's 
+          construction is an algorithm for compiling a regular expression to an NFA that can efficiently perform pattern matching on strings.</p>
+    <h2 id="formal">Formal definition</h2>
+<p>An NFA is represented formally by a 5-tuple, A={(Q,&Sigma;,&delta; ,q0,F)}, consisting of</p>
+<p>1. a finite set of states Q.</p>
+<p>2. a finite set of input symbols &sigma; .</p>
+<p>3. a member of Q,s is the start state.</p>
+<p>4. a finite set of states Q.</p>
+<p>5. &delta;, the transition function is a function that takes a state in Q 
+  and an input symbol in &sigma; as arguments and returns a subset of Q.</p>
+     <h2>Examples</h2>
 
+     <div class="kolon"> 
+     <h3>Example-1</h3>
+
+    <p>This NFA that accepts all binary strings that end
+        with
+      <font color=#045e2b>10 and 11</font>
+      </p>
+      <p>In formal notation, A= {{q0,q1,q2},{0,1},&delta; ,q0,{q2}}</p>
 <style>
     table { 
         border-collapse: collapse; 
         margin: 0 50px; 
     }
     th { 
-        color: blue; 
+        color: #27ae60; 
         padding: 5px 12px; 
     }
     td { 
-        border: 4px solid blue; 
+        border: 4px solid #27ae60; 
         padding: 5px 12px; 
         text-align: center; 
     }
 </style>
-<table>
+<table id="tablo">
 <tr><th></th><th>0</th><th>1</th></tr>
 <tr><th>> q0</th><td>q0q1</td><td>q1</td></tr>
 <tr><th>&emsp;q1</th><td>q2</td><td>q2</td></tr>
 <tr><th>* q2</th><td>ϕ</td><td>ϕ</td></tr>
 </table>
-<img src="nfa.png">
-  </body>
+<img  src="nfa.png"></div>
+
+
+
+     <div class="kolon">
+    <h3>Example-2</h3>
+
+   <p>This NFA that accepts all binary strings that end
+       with
+     <font color=#045e2b>10 and 11</font>
+     </p>
+     <p>In formal notation, A= {{a,b,c},{0,1},&delta; ,a,{c}}</p>
+<style>
+   table { 
+       border-collapse: collapse; 
+       margin: 0 50px; 
+   }
+   th { 
+       color: #27ae60; 
+       padding: 5px 12px; 
+   }
+   td { 
+       border: 4px solid #27ae60; 
+       padding: 5px 12px; 
+       text-align: center; 
+   }
+</style>
+<table id="tablo">
+<tr><th></th><th>0</th><th>1</th></tr>
+<tr><th>> a</th><td>ab</td><td>b</td></tr>
+<tr><th>&emsp;b</th><td>c</td><td>c</td></tr>
+<tr><th>* c</th><td>ϕ</td><td>ϕ</td></tr>
+</table>
+<img  src="nfa.png"></div>
+
+<div style='clear: both'/>
+
+<h2 id="App">Application</h2>
+<style type="text/css">
+  .kolon2 { float:left;  padding:10px; margin:10px; }
+  </style>
+  <p>Non-deterministic finite automaton for (1/0)*001</p>
+
+
+  w = <input id=input type=text value=01001
+    onChange="test()"> &emsp;
+  F = <input id=final type=text value=d
+    onChange="test()" style="width:30px">
+  <p id='yazı'></p>
+  <pre id=out></pre>
+  
+  <div class="kolon2">
+  <select name="drop1" id="Select1" onclick="list()">
+ 
+  <option value="1" onchange="example1()">Example 1 </option>
+   
+  <option value="2">Example 2</option>
+   
+  <option value="3">Example 3</option>
+   
+  <option value="4">Example 4</option>
+      
+  </select>
+
+  </div>
+  <div class="kolon2">
+    <h3>States</h3>
+    <p>Start state : 
+    <input type=text id="txt1" onChange="textdegistir(text1,value)">
+    </p>
+    <p>2.state : 
+    <input type=text id="txt2" onChange="textdegistir(text2,value)">
+    </p>
+    <p>3.state : 
+        <input type=text id="txt3" onChange="textdegistir(text3,value)">
+        </p>
+    <p> Final state: 
+    <input type=text id="txt4" onChange="textdegistir(text4,value)">
+    </p>
+    <button onclick="animasyon()">animate</button>
+  </div>
+  <div class="kolon2">
+ <svg id='svg' width='570' height='200'>
+    
+  <line x1="0" y1="70" x2="33" y2="70" stroke="#000" stroke-width="3" marker-end="url(#arrow)" />
+  
+  <text id="d1" x="0" y="60" fill="black">start</text>
+  
+  <circle id='crc1' cx='90' cy='70' r='29'
+  style='fill:white;stroke:#045e2b;stroke-width:4' />
+  
+  
+  <text id='text0' x='55' y='35' fill='black'>0,1*</text>
+  
+  <text id='text1' x='81' y='65' fill='black'>q0</text>
+  
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#045e2b" />
+    </marker>
+    
+  </defs>
+  
+  <line id="1.ok" x1="117" y1="70" x2="180" y2="70" stroke="#000" stroke-width="3" marker-end="url(#arrow)" />
+  
+  <line id="1,5.ok" x1="77" y1="40" x2="100" y2="10" stroke="#000" stroke-width="3"  />
+  
+  <line id="1,7.ok" x1="100" y1="10" x2="110" y2="40" stroke="#000" stroke-width="3" marker-end="url(#arrow)" />
+
+  <line id="2.ok" x1="240" y1="70" x2="329" y2="70" stroke="#000" stroke-width="3" marker-end="url(#arrow)" />
+  
+  <circle id='crc2' cx='230' cy='70' r='29'
+  style='fill:white;stroke:#045e2b;stroke-width:4' />
+  
+  <text id='text2' x='230' y='69' fill='black'>q1</text>
+  
+  
+  
+  <text id="d1" x="150" y="62" fill="black">0</text>
+  
+  <circle id='crc3' cx='505' cy='70' r='39'
+  style='fill:white;stroke:#045e2b;stroke-width:4' />
+  <text id="d2" x="294" y="62" fill="black">0</text>
+  <circle id='crc4' cx='379' cy='70' r='29'
+  style='fill:white;stroke:#045e2b;stroke-width:4' />
+  <text id='text3' x='378' y='69' fill='black'>q2</text>
+  <line id="3.ok" x1="409" y1="70" x2="442" y2="70" stroke="#000" stroke-width="3" marker-end="url(#arrow)" />
+  <text id='text5' x='424' y='65' fill='black'>1</text>
+  
+  <circle id='crc5' cx='505' cy='70' r='29'
+  style='fill:white;stroke:#045e2b;stroke-width:4' />
+  <text id='text4' x='489' y='69' fill='black'>q3</text>
+
+</svg>
+<p id="textt" style="color:#045e2b;font-size:45px"></p>
+<p id="textt2" value="---" style="color:#045e2b;font-size:45px"></p>
+  </div>
+<div class="kolon2">
+    <table id="apptable"
+  <tr><th></th><th>0</th><th>1</th></tr>
+      <tr><th>> a</th><td>a b</td><td>b</td></tr>
+      <tr><th>&emsp; b</th><td> c</td><td>ϕ</td></tr>
+      <tr><th> c</th><td>ϕ</td><td>d</td></tr>
+      <tr><th>* d</th><td> ϕ</td><td>ϕ</td></tr>
+    </table>
+    
+
+</div>
+
+
+  <div style='clear: both'/>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<script>
+  //document.getElementById("svg").style.display = "none"
+function textdegistir(nesne,value){
+  //var x = document.getElementById("apptable").rows[1].cells;
+
+  this.nesne=nesne;
+  this.value=value;
+  //x[0].innerHTML = "NEW CONTENT";
+  nesne.textContent=value;
+}
+function list(){
+var e = document.getElementById("Select1");
+var strUser = e.options[e.selectedIndex].value;
+//document.getElementById("svg").style.display = "block"
+  var t1 =document.getElementById("text1");
+  var t2 =document.getElementById("text2");
+  var t3 =document.getElementById("text3");
+  var t4 =document.getElementById("text4");
+  
+  var it1 =document.getElementById("txt1");
+  var it2 =document.getElementById("txt2");
+  var it3 =document.getElementById("txt3");
+  var it4 =document.getElementById("txt4");
+  if (strUser == 1) {
+    t1.textContent="a";
+    t2.textContent="b";
+    t3.textContent="c";
+    t4.textContent="d";
+  }
+    it1.value="a";
+    it2.value="b";
+    it3.value="c";
+    it4.value="d";
+}
+
+function animasyon(state='a'){
+  var textinput =document.getElementById("input").value;
+  var t =document.getElementById("textt");
+  t.innerHTML=textinput;
+
+  var tt2 =document.getElementById("textt2");
+  var c1 =document.getElementById("crc1");
+  var c2 =document.getElementById("crc2");
+  var c4 =document.getElementById("crc4");
+  var c5 =document.getElementById("crc5");
+
+for (let index = 0; index < textinput.length; index++) {
+  if (textinput[index]=='0'&& state=='a') {
+    t.style.color="red";
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 1000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 3000);;
+    //index++;
+   state='ab';
+  }
+  if (state=='ab') {
+    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 1000);;
+    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 3000);;
+    
+    //index++;
+    state='a';
+  }
+  if (textinput[index]=='1'&& state=='a') {
+    t.style.color="red";
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 3000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 4000);;
+    //index++;
+   state='b';
+  }
+
+  if (textinput[index]=='0' && state=='b') {
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 5000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 6000);;
+    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 5000);;
+    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 6000);;
+    //index++;
+    state='c';
+  }
+  if (textinput[index]=='0' && state=='c') {
+    c4.style.fill=setTimeout(function(){ c4.style.fill="purple" }, 7000);;
+    c4.style.fill=setTimeout(function(){ c4.style.fill="white" }, 8000);;
+    //index++;
+    state='d';
+  }
+
+  if (textinput[index]=='1' && state=='d' && index==textinput.length-1) {
+    c5.style.fill=setTimeout(function(){ c5.style.fill="purple" }, 11000);;
+    c5.style.fill=setTimeout(function(){ c5.style.fill="white" }, 13000);;
+    index++;
+
+    
+    tt2.innerHTML=" "+"accept";
+    t.style.color="green";
+ 
+    if (textinput[index]=='1' && textinput[index]=='0') {
+      tt2.innerHTML=" "+"reject";
+    }
+
+
+  }
+  if (index==textinput.length-1 && state!='d') {
+       
+       
+       tt2.innerHTML=" "+"reject";
+
+
+
+  }
+  
+ 
+  
+
+
+
+}
+
+
+
+  
+ 
+
+
+
+
+}
+
+
+function union(a, b) { //set operation using strings
+    let s = a
+    for (let x of b) if (!a.includes(x)) s += x
+    return s
+}
+function intersect(a, b) {
+    let s = ''
+    for (let x of b) if (a.includes(x)) s += x
+    return s
+}
+function delta(q, c) { // (1|0)*001
+    if (q=='a' && c=='0') return 'ab'
+    if (q=='a' && c=='1') return 'a'
+    if (q=='b' && c=='0') return 'c' 
+    if (q=='c' && c=='1') return 'd'
+    return '';  //default -- no transition
+}
+
+function accept(w, F='d', Q='a') {
+    //w: input String
+    //F: final state(s)
+    //Q: current state(s)
+    let i = 0, txt = Q
+    let w2=Array.from(w);
+    let txt2="("+Q;
+    while (i < w.length) {
+        let c = w[i], T=''
+        for (let q of Q) 
+            T = union(T, delta(q, c))
+        Q = T
+        if (Q == '') break
+        i++; 
+        txt += ", "+c+" -> "+Q+'\n'+Q;
+        //txt2 += ","+w2+")"+ "|-"+"("+Q+","+w2+")" + "|-";
+        //animasyon(Q);
+        w2.pop();
+    }
+    
+console.log(txt2);
+    input.selectionStart = i
+    input.selectionEnd = i+1
+    let a = intersect(Q, F).length > 0
+    return  a 
+}
+function test() {
+    let s = accept(input.value, final.value);
+    //yazı.innerHTML="--bütün otomatalarda kabul edilen sayılar---";
+    console.log(s);  out.innerHTML = s
+    let e=/00$/
+    let a=[];
+    let b=[];
+    let c=[];
+    for (let n=1; n<50; n++) {
+          let w = n.toString(2)  // to binary
+          if (accept(w) ){
+            a.push(w);
+
+        }
+       
+     }
+
+
+}
+
+test();
+
+
+
+</script>
+
+
+
+<div>
+ <h3 id="referans">References</h3>
+<p><a href="https://people.cs.clemson.edu/~goddard/texts/theoryOfComputation/3a.pdf">NFA theory</a></p>
+<p><a href="http://www.wikiwand.com/en/Nondeterministic_finite_automaton"> wikiwand </a></p>  
+<p><a href="https://vanseodesign.com/web-design/svg-markers/">Arrow</a></p>
+
+</div>
+ 
+
+
+
 </html>
