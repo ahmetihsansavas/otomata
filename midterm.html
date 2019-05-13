@@ -311,27 +311,59 @@ var strUser = e.options[e.selectedIndex].value;
   var it2 =document.getElementById("txt2");
   var it3 =document.getElementById("txt3");
   var it4 =document.getElementById("txt4");
+
+  var s1 = document.getElementById("apptable").rows[1].cells;
+  var s2 = document.getElementById("apptable").rows[2].cells;
+  var s3 = document.getElementById("apptable").rows[3].cells;
+
+  var table = document.getElementById("apptable");
+
   if (strUser == 1) {
     t1.textContent="a";
     t2.textContent="b";
     t3.textContent="c";
     t4.textContent="d";
+
     it1.value="a";
     it2.value="b";
     it3.value="c";
     it4.value="d";
+
+  table.rows[1].cells[0].innerHTML="> a";
+  table.rows[1].cells[1].innerHTML="a b";
+  table.rows[1].cells[2].innerHTML="a";
+  
+  table.rows[2].cells[0].innerHTML="b";
+  table.rows[2].cells[1].innerHTML="a b c";
+ 
+  table.rows[3].cells[0].innerHTML="c";
+  table.rows[3].cells[2].innerHTML="a d";
+
+  table.rows[4].cells[0].innerHTML="* d";
   //animasyon();
   }
   if (strUser == 2) {
-    t1.textContent="a";
-    t2.textContent="b";
-    t3.textContent="c";
-    t4.textContent="d";
-    it1.value="a";
-    it2.value="b";
-    it3.value="c";
-    it4.value="d";
+    t1.textContent="q0";
+    t2.textContent="q1";
+    t3.textContent="q2";
+    t4.textContent="q3";
+    it1.value="q0";
+    it2.value="q1";
+    it3.value="q2";
+    it4.value="q3";
+
+  table.rows[1].cells[0].innerHTML="> qo";
+  table.rows[1].cells[1].innerHTML="qo q1";
+  table.rows[1].cells[2].innerHTML="q0";
   
+  table.rows[2].cells[0].innerHTML="q1";
+  table.rows[2].cells[1].innerHTML="q0 q1 q2";
+ 
+  table.rows[3].cells[0].innerHTML="q2";
+  table.rows[3].cells[2].innerHTML="q0 q3";
+
+  table.rows[4].cells[0].innerHTML="* q3";
+
   }
 
 
