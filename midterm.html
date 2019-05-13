@@ -83,7 +83,7 @@ li a:hover{
           NFAs are used in the implementation of regular expressions: Thompson's 
           construction is an algorithm for compiling a regular expression to an NFA that can efficiently perform pattern matching on strings.</p>
     <h2 id="formal">Formal definition</h2>
-<p>An NFA is represented formally by a 5-tuple, A={(Q,&Sigma;,&delta; ,q0,F)}, consisting of</p>
+<p>An NFA is represented formally by a 5-tuple, A={(Q,&Sigma;,&delta; ,s,F)}, consisting of</p>
 <p>1. a finite set of states Q.</p>
 <p>2. a finite set of input symbols &sigma; .</p>
 <p>3. a member of Q,s is the start state.</p>
@@ -261,9 +261,9 @@ li a:hover{
 <div class="kolon2">
     <table id="apptable"
   <tr><th></th><th>0</th><th>1</th></tr>
-      <tr><th>> a</th><td>a b</td><td>b</td></tr>
-      <tr><th>&emsp; b</th><td> c</td><td>ϕ</td></tr>
-      <tr><th> c</th><td>ϕ</td><td>d</td></tr>
+      <tr><th>> a</th><td>a b</td><td>a</td></tr>
+      <tr><th>&emsp; b</th><td> a b c</td><td>ϕ</td></tr>
+      <tr><th> c</th><td>ϕ</td><td>a d</td></tr>
       <tr><th>* d</th><td> ϕ</td><td>ϕ</td></tr>
     </table>
     
@@ -316,17 +316,37 @@ var strUser = e.options[e.selectedIndex].value;
     t2.textContent="b";
     t3.textContent="c";
     t4.textContent="d";
-  }
     it1.value="a";
     it2.value="b";
     it3.value="c";
     it4.value="d";
+  animasyon();
+  }
+  if (strUser == 2) {
+    t1.textContent="a";
+    t2.textContent="b";
+    t3.textContent="c";
+    t4.textContent="d";
+    it1.value="a";
+    it2.value="b";
+    it3.value="c";
+    it4.value="d";
+  
+  }
+
+
+
+    
 }
 
-function animasyon(state='a'){
+function animasyon(state='a',finalstate='d'){
   var textinput =document.getElementById("input").value;
   var t =document.getElementById("textt");
   t.innerHTML=textinput;
+
+  var s1 = document.getElementById("apptable").rows[1].cells;
+  var s2 = document.getElementById("apptable").rows[2].cells;
+  var s3 = document.getElementById("apptable").rows[3].cells;
 
   var tt2 =document.getElementById("textt2");
   var c1 =document.getElementById("crc1");
@@ -339,71 +359,122 @@ for (let index = 0; index < textinput.length; index++) {
     t.style.color="red";
     c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 1000);;
     c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 3000);;
+    tt2.innerHTML="reject";
+    tt2.style.color="red";
+   
     //index++;
    state='ab';
   }
   if (state=='ab') {
-    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 1000);;
-    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 3000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 4000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 5000);;
+
+    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 4000);;
+    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 5000);;
     
+    s1[1].style.color=setTimeout(function(){ s1[1].style.color="purple" }, 4000);;
+    s1[1].style.color=setTimeout(function(){ s1[1].style.color="black" }, 5000);;
     //index++;
     state='a';
   }
   if (textinput[index]=='1'&& state=='a') {
     t.style.color="red";
-    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 3000);;
-    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 4000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 6000);
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 7000);
+    s1[2].style.color=setTimeout(function(){ s1[2].style.color="purple" }, 6000);
+    s1[2].style.color=setTimeout(function(){ s1[2].style.color="black" }, 7000);
     //index++;
+    tt2.innerHTML="reject";
+    tt2.style.color="red";
    state='b';
   }
 
   if (textinput[index]=='0' && state=='b') {
-    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 5000);;
-    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 6000);;
-    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 5000);;
-    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 6000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 8000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 9000);;
+    
+    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 8000);;
+    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 9000);;
+   
+    s1[1].style.color=setTimeout(function(){ s1[1].style.color="purple" }, 8000);;
+    s1[1].style.color=setTimeout(function(){ s1[1].style.color="black" }, 9000);;
     //index++;
     state='c';
   }
   if (textinput[index]=='0' && state=='c') {
-    c4.style.fill=setTimeout(function(){ c4.style.fill="purple" }, 7000);;
-    c4.style.fill=setTimeout(function(){ c4.style.fill="white" }, 8000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 10000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 11000);;
+    
+    c2.style.fill=setTimeout(function(){ c2.style.fill="purple" }, 10000);;
+    c2.style.fill=setTimeout(function(){ c2.style.fill="white" }, 11000);;
+    
+    c4.style.fill=setTimeout(function(){ c4.style.fill="purple" }, 10000);;
+    c4.style.fill=setTimeout(function(){ c4.style.fill="white" }, 11000);;
+    s2[1].style.color=setTimeout(function(){ s2[1].style.color="purple" }, 10000);
+    s2[1].style.color=setTimeout(function(){ s2[1].style.color="black" }, 11000);
     //index++;
     state='d';
   }
 
   if (textinput[index]=='1' && state=='d' && index==textinput.length-1) {
-    c5.style.fill=setTimeout(function(){ c5.style.fill="purple" }, 11000);;
-    c5.style.fill=setTimeout(function(){ c5.style.fill="white" }, 13000);;
-    index++;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="purple" }, 12000);;
+    c1.style.fill=setTimeout(function(){ c1.style.fill="white" }, 13000);;
 
+    c5.style.fill=setTimeout(function(){ c5.style.fill="purple" }, 12000);;
+    c5.style.fill=setTimeout(function(){ c5.style.fill="white" }, 13000);;
     
-    tt2.innerHTML=" "+"accept";
+    s3[2].style.color=setTimeout(function(){ s3[2].style.color="purple" }, 12000);
+    s3[2].style.color=setTimeout(function(){ s3[2].style.color="black" }, 13000);
+    
+    tt2.innerHTML="accept";
+    tt2.style.color="green";
+    //tt2.innerHTML=" "+"accept";
     t.style.color="green";
  
     if (textinput[index]=='1' && textinput[index]=='0') {
       tt2.innerHTML=" "+"reject";
     }
-
-
-  }
-  if (index==textinput.length-1 && state!='d') {
-       
-       
-       tt2.innerHTML=" "+"reject";
-
-
-
-  }
+    state='&';
   
+  }
+  if (textinput[index]=='1'  && state=='&' && textinput.length>5) {
+    
+    
+    //tt2.innerHTML=" "+"accept";
+    t.style.color="red";
+    tt2.innerHTML="reject";
+    tt2.style.color="red";
+
+  }
+
+  if (textinput[index]=='0'  && state=='&' && textinput.length>5) {
+    
+    
+    //tt2.innerHTML=" "+"accept";
+    t.style.color="red";
+    tt2.innerHTML="reject";
+    tt2.style.color="red";
+
+  }
+
+  /*if (index==textinput.length-1 && state!='d') {
+    t.style.color="red";
+       
+       //tt2.innerHTML=" "+"reject";
+
+
+
+  }
  
-  
+  */
 
 
 
 }
 
-
+function animasyon2(params) {
+  
+}
 
   
  
@@ -456,7 +527,7 @@ console.log(txt2);
     input.selectionStart = i
     input.selectionEnd = i+1
     let a = intersect(Q, F).length > 0
-    return  a 
+    return txt+'  '+ (a? "Accept": "Reject") 
 }
 function test() {
     let s = accept(input.value, final.value);
@@ -491,7 +562,7 @@ test();
 <p><a href="https://people.cs.clemson.edu/~goddard/texts/theoryOfComputation/3a.pdf">NFA theory</a></p>
 <p><a href="http://www.wikiwand.com/en/Nondeterministic_finite_automaton"> wikiwand </a></p>  
 <p><a href="https://vanseodesign.com/web-design/svg-markers/">Arrow</a></p>
-
+<p><a href="https://ahmetihsansavas.github.io/otomata/cw2.html">NFA</a></p>
 </div>
  
 
